@@ -4,12 +4,12 @@ import Image from "next/image";
 
 export default function ImageCarousel() {
   const baseImages = [
-    { id: 1, src: "/kunder/ahlens.png", alt: "Kund 1" },
-    { id: 2, src: "/kunder/akavia.png", alt: "Kund 2" },
-    { id: 3, src: "/kunder/breitling.png", alt: "Kund 3" },
-    { id: 4, src: "/kunder/filadelfia.png", alt: "Kund 4" },
-    { id: 5, src: "/kunder/jaguar.png", alt: "Kund 4" },
-    { id: 6, src: "/kunder/webhallen.png", alt: "Kund 4" },
+    { id: 1, src: "/kunder/ahlens.png", alt: "Åhlens City Stockholm" },
+    { id: 2, src: "/kunder/akavia.png", alt: "Akavia" },
+    { id: 3, src: "/kunder/breitling.png", alt: "Breitling" },
+    { id: 4, src: "/kunder/filadelfia.png", alt: "Filadelfia Stockholm" },
+    { id: 5, src: "/kunder/jaguar.png", alt: "Jaguar" },
+    { id: 6, src: "/kunder/webhallen.png", alt: "Webhallen" },
   ];
 
   const images = [...baseImages, ...baseImages];

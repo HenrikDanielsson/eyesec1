@@ -165,7 +165,7 @@ export default function Home() {
 											Vi levererar säkerhet till bland andra:
 										</h2>
 									</section>
-									<ImageCarousel className="w-full mb-0" />
+									<ImageCarousel className="h-40 w-full mb-0" />
 								</div>
 
 								<section className="w-full bg-section p-8 md:rounded-lg mb-8 md:mb-16">

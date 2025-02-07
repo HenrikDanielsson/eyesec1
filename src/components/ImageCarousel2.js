@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function ImageCarousel() {
@@ -17,39 +17,51 @@ export default function ImageCarousel() {
 		},
 	];
 
+	// Duplicate images for seamless scroll
 	const images = [...baseImages, ...baseImages];
+	const listRef = useRef(null);
+
+	useEffect(() => {
+		if (listRef.current) {
+			// Calculate the total width of the first set
+			const firstSetCount = baseImages.length;
+			let width = 0;
+			const children = listRef.current.children;
+			for (let i = 0; i < firstSetCount; i++) {
+				const childRect = children[i].getBoundingClientRect();
+				width += childRect.width;
+			}
+			// Set the CSS custom property for scroll distance
+			listRef.current.style.setProperty('--translate-distance', `${width}px`);
+		}
+	}, [baseImages.length]);
 
 	return (
-		<main className="relative h-40 flex flex-col justify-center overflow-hidden">
-			<div className="w-full max-w-5xl mx-auto px-4 md:px-6 ">
-				<div className="text-center">
-					<div
-						x-data="{}"
-						x-init="$nextTick(() => {
-                        let ul = $refs.logos;
-                        ul.insertAdjacentHTML('afterend', ul.outerHTML);
-                        ul.nextSibling.setAttribute('aria-hidden', 'true');
-                    })"
-						className="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] rounded-lg"
-					>
-						<ul
-							x-ref="logos"
-							className="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll"
+		<main className="relative w-full h-40 flex flex-col justify-center overflow-hidden">
+			{/* Fade overlay vänster (hidden på mobiler) */}
+			<div className="hidden z-10 sm:block absolute left-0 top-0 w-20 h-full pointer-events-none bg-gradient-to-r from-[var(--background)] to-transparent" />
+			{/* Fade overlay höger (hidden på mobiler) */}
+			<div className="hidden z-10 sm:block absolute right-0 top-0 w-20 h-full pointer-events-none bg-gradient-to-l from-[var(--background)] to-transparent" />
+			{/* Container med relativ position och 100% bredd */}
+			<div className="relative w-full h-full">
+				{/* Den animerade listan placeras absolut så att den inte påverkar förälderns beräknade bredd */}
+				<ul
+					ref={listRef}
+					className="absolute top-0 left-0 flex items-center animate-infinite-scroll whitespace-nowrap will-change-transform"
+				>
+					{images.map((image, idx) => (
+						<li
+							key={`${image.id}-${idx}`}
+							className="inline-block min-w-max min-h-max"
 						>
-							{images.map((image, idx) => (
-								<li key={`${image.id}-${idx}`}>
-									<Image
-										src={image.src}
-										alt={image.alt}
-										width={200}
-										height={150}
-										className="grayscale invert-0 dark:invert"
-									/>
-								</li>
-							))}
-						</ul>
-					</div>
-				</div>
+							<img
+								src={image.src}
+								alt={image.alt}
+								className="w-40 mx-8 grayscale invert-0 dark:invert object-contain"
+							/>
+						</li>
+					))}
+				</ul>
 			</div>
 		</main>
 	);

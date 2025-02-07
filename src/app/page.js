@@ -165,6 +165,19 @@ export default function Home() {
 									</section>
 									<ImageCarousel className="w-full mb-0" />
 								</div>
+
+								<section className="w-full bg-section p-8 md:rounded-lg mb-8 md:mb-16">
+									<h2 className="text-xl sm:text-2xl font-bold mb-4 md:mb-6">
+										Just nu:
+									</h2>
+									<p className="text-base sm:text-lg leading-relaxed mb-6">
+										Vi har nyligen installerat ett nytt larm- och
+										kameraövervakningssystem på en skola i Stockholm. Systemet
+										är anpassat för att skydda skolans elever och personal, och
+										ger full kontroll över åtkomsten till skolans lokaler.
+									</p>
+								</section>
+
 								{/* Services Sections */}
 								<section className="w-full space-y-8 md:space-y-16 mb-8 md:mb-16">
 									<h2 className="text-xl sm:text-2xl font-bold mb-6 md:mb-8 text-center">

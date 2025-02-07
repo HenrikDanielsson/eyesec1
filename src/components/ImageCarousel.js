@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 export default function ImageCarousel() {
@@ -21,18 +21,18 @@ export default function ImageCarousel() {
 
 	return (
 		<div className="w-full overflow-hidden h-40 sm:h-40 relative">
-			<div className="absolute top-0 left-0 flex animate-infinite-scroll">
+			<div className="absolute top-0 left-0 flex animate-infinite-scroll duration-500">
 				{images.map((item, idx) => (
 					<div
 						key={`${item.id}-${idx}`}
-						className="w-20 h-20 sm:w-40 sm:h-40 mr-4 last:mr-0 flex-shrink-0 flex items-center justify-center bg-gray-100/80 rounded-lg"
+						className="w-60 h-40 sm:w-80 sm:h-40 mr-4 last:mr-0 flex-shrink-0 flex items-center justify-center bg-gray-100/80 rounded-lg"
 					>
 						<Image
 							src={item.src}
 							alt={item.alt}
-							width={150}
+							width={200}
 							height={150}
-							className="object-contain w-full h-full p-2"
+							className="grayscale object-contain w-full h-full p-2"
 						/>
 					</div>
 				))}

@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import ScrollToTop from '@/components/ScrollToTop';
-import ImageCarousel from '@/components/ImageCarousel';
+import ImageCarousel from '@/components/ImageCarousel2';
 import { useEffect, useRef, useState } from 'react';
 import ContactForm from '@/components/ContactForm';
 
@@ -59,7 +59,7 @@ export default function Home() {
 						<div className="flex justify-between items-center p-10">
 							<Image
 								src="/gfx/logo.png"
-								alt="Logo"
+								alt="Eyesec Larmteknik AB Logotyp"
 								width={100}
 								height={38}
 								priority
@@ -76,7 +76,7 @@ export default function Home() {
 						<div className="flex justify-between items-center p-10">
 							<Image
 								src="/gfx/logo.png"
-								alt="Logo"
+								alt="Eyesec Larmteknik AB Logotyp"
 								width={100}
 								height={38}
 								priority
@@ -106,7 +106,7 @@ export default function Home() {
 						<div className="flex items-end justify-center pt-20 pb-8">
 							<Image
 								src="/gfx/logo.png"
-								alt="Logo"
+								alt="Eyesec Larmteknik AB Logotyp"
 								width={200}
 								height={76}
 								priority
@@ -161,7 +161,9 @@ export default function Home() {
 								</section>
 								<div className="w-full space-y-8 md:space-y-16 mb-2 md:mb-16">
 									<section className="w-full p-0 sm:mx-0 mb-2 text-center">
-										<h2 className="text-2xl font-bold mb-6">Våra kunder</h2>
+										<h2 className="text-2xl font-bold mb-6">
+											Vi levererar säkerhet till bland andra:
+										</h2>
 									</section>
 									<ImageCarousel className="w-full mb-0" />
 								</div>
